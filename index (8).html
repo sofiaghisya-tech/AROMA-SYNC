@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f8f6fc" />
+  <meta name="description" content="Prototipe konseptual AROMA-SYNC: relaksasi multisensori, biofeedback, zikir–muhasabah Qurani, dan model Reset-to-Resume untuk mahasiswa tingkat akhir." />
+  <title>AROMA-SYNC — Ruang jeda untuk kembali melangkah</title>
+  <!-- Tipografi tunggal: Inter, dengan fallback sistem ketika offline. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+  :root{--ink:#29243a;--muted:#716b80;--lav:#896ba6;--lav2:#ede6f4;--lav3:#f8f5fb;--sage:#6d9283;--sage2:#e8f2ed;--line:#e8e4ed;--white:#fff;--warm:#fbf9f6;--shadow:0 18px 55px rgba(49,32,75,.065);--r:22px}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#faf9fc;color:var(--ink);font-family:Inter,'Segoe UI',Arial,sans-serif;font-size:14px;line-height:1.65}button,input,textarea,select{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #b99cde;outline-offset:3px}
+  .layout{min-height:100vh;display:grid;grid-template-columns:262px minmax(0,1fr)}.sidebar{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;background:#fff;border-right:1px solid var(--line);padding:31px 21px;z-index:3}.brand{display:flex;gap:12px;align-items:center;padding:4px 9px 24px}.brand-icon{width:41px;height:41px;border-radius:14px;background:linear-gradient(145deg,#8d71b2,#bda9d1);display:grid;place-items:center;color:#fff;font-size:22px}.brand-name{font-size:18px;font-weight:850;letter-spacing:-.75px;line-height:1.1}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:.1em;font-weight:700;margin-top:5px}.nav-title{font-size:10px;text-transform:uppercase;letter-spacing:.17em;color:#9b95a7;font-weight:800;margin:12px 12px 10px}.nav-link{border:0;background:transparent;display:flex;align-items:center;gap:11px;padding:12px 14px;border-radius:12px;color:#655e73;text-align:left;width:100%;font-weight:650;margin:3px 0}.nav-link svg{width:19px;height:19px;stroke-width:1.75}.nav-link:hover{background:var(--lav3)}.nav-link.active{background:#f1ebf6;color:#684789}.side-bottom{margin-top:auto;background:#f7f4fa;border:1px solid #eee6f3;padding:15px;border-radius:16px}.side-bottom strong{font-size:12px;display:block}.side-bottom p{font-size:11px;color:#766f83;margin:6px 0 0;line-height:1.6}.side-meta{font-size:10px;color:#9d96a6;margin:12px 6px 0}
+  .main{padding:34px clamp(24px,4.2vw,70px) 70px;min-width:0;max-width:1540px;width:100%;margin:0 auto}.topbar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-bottom:26px}.eyebrow{font-size:11px;letter-spacing:.15em;font-weight:800;text-transform:uppercase;color:#9175ad}.top-right{display:flex;align-items:center;gap:10px}.tag{display:inline-flex;align-items:center;gap:7px;border:1px solid #e0d4ea;border-radius:30px;padding:7px 12px;color:#745c91;font-size:11px;font-weight:750;background:#f6f1fa}.dot{display:inline-block;width:7px;height:7px;background:#b39acb;border-radius:50%}.avatar{width:36px;height:36px;border-radius:50%;background:var(--sage2);color:var(--sage);display:grid;place-items:center;font-weight:800}
+  .hero{position:relative;border-radius:28px;overflow:hidden;background:linear-gradient(115deg,#f0e9f7 0%,#f4f0f7 53%,#e9f1eb 100%);display:grid;grid-template-columns:minmax(0,1.18fr) minmax(230px,.82fr);min-height:285px;padding:39px 36px;isolation:isolate}.hero:before,.hero:after{content:"";position:absolute;z-index:-1;border:1px solid #ffffff80;border-radius:50%;width:410px;height:410px;right:4%;top:-175px}.hero:after{width:280px;height:280px;right:-64px;top:115px}.hero h1{font-size:clamp(28px,3.15vw,43px);letter-spacing:-1.8px;line-height:1.16;margin:16px 0 13px;font-weight:850;max-width:640px}.hero h1 em{font-style:normal;color:#755a9a}.hero p{max-width:610px;color:#756984;margin:0 0 22px;font-size:13px}.btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;border:1px solid transparent;padding:11px 17px;border-radius:11px;font-weight:760;line-height:1.3;transition:transform .15s,box-shadow .15s}.btn:hover{transform:translateY(-1px)}.btn.primary{background:#785b9a;color:#fff;box-shadow:0 6px 18px #7b5c9b2c}.btn.secondary{color:#6b5187;background:#fff;border-color:#e3d9ed}.btn.sage{background:var(--sage);color:#fff}.btn.ghost{background:#f6f3f9;color:#665476}.btn.small{padding:8px 12px;font-size:12px}.hero-actions{display:flex;gap:10px;flex-wrap:wrap}.hero-art{position:relative;display:flex;align-items:center;justify-content:center;min-height:230px}.halo{position:absolute;inset:10px 0;max-width:280px;margin:auto;border-radius:50%;background:radial-gradient(circle,#fff8 0 35%,#ffffff35 36% 56%,transparent 57%);box-shadow:0 0 0 1px #ffffff75}.diffuser{position:absolute;width:118px;height:138px;left:calc(50% - 84px);top:52px;filter:drop-shadow(0 16px 16px #6e547033)}.diffuser-lid{height:28px;width:98px;margin:auto;background:linear-gradient(135deg,#fff,#d8d2da);border-radius:48% 48% 20% 20%}.diffuser-body{height:110px;background:linear-gradient(115deg,#fff,#ddd5dd);border-radius:35px 35px 28px 28px;border:1px solid #fdf9fc;position:relative}.diffuser-body:before{content:"";position:absolute;top:35px;left:28px;width:60px;height:3px;border-radius:2px;background:#b0d2be}.diffuser-body:after{content:"";position:absolute;bottom:21px;left:38px;width:40px;height:11px;border-radius:8px;background:repeating-linear-gradient(90deg,#888292 0 1.4px,transparent 1.4px 5px);opacity:.8}.vapor{position:absolute;left:45px;top:-22px;width:20px;height:35px;border-left:2px solid #fff9;border-radius:50%;transform:rotate(17deg)}.watch{position:absolute;width:104px;height:113px;left:calc(50% + 37px);top:84px;transform:rotate(10deg);filter:drop-shadow(0 13px 11px #625c713b)}.watch-strap{background:#8b849a;width:38px;height:112px;position:absolute;left:34px;top:0;border-radius:13px}.watch-face{position:absolute;width:100px;height:83px;background:#34303e;top:14px;left:1px;border-radius:23px;padding:9px;border:3px solid #ad9db1}.watch-screen{height:100%;border-radius:13px;background:#242432;color:#f4eafa;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:9px;letter-spacing:.025em}.watch-screen strong{font-size:21px;line-height:1.3}.watch-screen small{font-size:8px;color:#b5ddc1}.watch:after{content:"";position:absolute;right:-5px;top:42px;width:4px;height:15px;background:repeating-linear-gradient(#858091 0 2px,transparent 2px 5px);border-radius:2px}.float-label{position:absolute;font-size:10px;display:flex;align-items:center;gap:6px;border-radius:50px;background:#ffffffc7;border:1px solid #fff;padding:6px 10px;color:#66587a;box-shadow:0 6px 20px #5c4d6c0e}.fl1{top:38px;right:8px}.fl2{bottom:24px;left:15px}.fl3{bottom:18px;right:12px}.s-dot{width:6px;height:6px;background:#92b9a5;border-radius:50%}
+  .section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:32px 0 16px}.section-head h2{margin:0;font-size:22px;letter-spacing:-.7px}.section-head p{margin:4px 0 0;color:var(--muted);font-size:12px}.subtle{color:var(--muted);font-size:12px}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:23px;box-shadow:var(--shadow);min-width:0}.stat-value{font-size:31px;line-height:1.25;letter-spacing:-1.1px;font-weight:820;margin:9px 0 3px}.stat-label{color:#7a7387;font-size:11px;font-weight:650}.stat-top{display:flex;align-items:center;justify-content:space-between}.round-icon{display:grid;place-items:center;width:38px;height:38px;border-radius:13px;background:var(--lav3);color:#805f9f;font-size:20px}.round-icon.green{color:#6b9282;background:var(--sage2)}.round-icon.gold{background:#fbf2e5;color:#bb9767}
+  .split{display:grid;grid-template-columns:1.45fr 1fr;gap:17px;margin-top:18px}.section{scroll-margin-top:18px}.process-preview{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;margin-top:20px}.mini-step{padding:13px 7px;border-radius:15px;background:#f8f6fa;text-align:center;color:#777087;min-width:0}.mini-step span{display:block;font-size:20px;margin-bottom:4px}.mini-step strong{display:block;font-size:11px}.mini-step small{font-size:9px;color:#9f97a9}.mini-step.current{background:#ede6f4;color:#785a98}.feedback{background:#f4f8f5;border:1px solid #e4eee7;border-radius:15px;padding:15px 17px;color:#586f61;font-size:12px}.feedback strong{font-size:12px;color:#426f57}
+  .stepnav{display:flex;gap:6px;overflow-x:auto;margin-bottom:20px;padding-bottom:5px}.stepnav button{display:flex;align-items:center;gap:8px;flex:1;background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px 12px;white-space:nowrap;text-align:left;font-size:12px;font-weight:700;color:#827a8e;min-width:120px}.stepnav button span{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#f1eef5;color:#8e7da0;font-size:11px}.stepnav button.selected{border-color:#c9b5df;background:#f5eff9;color:#70508e}.stepnav button.selected span{background:#82649f;color:#fff}.formhead{font-size:20px;font-weight:820;letter-spacing:-.5px;margin:0 0 4px}.formdesc{font-size:12px;color:#81788c;margin-bottom:23px}.step-panel{display:none}.step-panel.active{display:block}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:17px}.field{display:flex;flex-direction:column;gap:8px;margin-bottom:17px}.field label,.field-label{font-weight:760;color:#4b425a;font-size:12px}.field input[type=text],.field textarea,.field select{width:100%;border:1px solid #e4dfeb;background:#fbf9fd;border-radius:10px;padding:12px 13px;color:#3e3549;min-height:44px}.field textarea{min-height:90px;resize:vertical}.field input[type=range]{width:100%;accent-color:#896ba6}.pill-row{display:flex;gap:8px;flex-wrap:wrap}.choice{border:1px solid #e8dfed;background:#fff;border-radius:12px;padding:9px 12px;color:#665b75;font-weight:650;font-size:12px}.choice[aria-pressed=true]{background:#eee6f5;border-color:#bea6d4;color:#694b89}.choice.green[aria-pressed=true]{background:#e9f3ed;border-color:#aac9b5;color:#4a7f66}.level{display:flex;align-items:center;justify-content:space-between;color:#8c8195;font-size:11px;margin-top:-2px}.level strong{color:#735795;font-size:19px}.note{font-size:11px;color:#8b8196;line-height:1.7}.divider{height:1px;background:var(--line);margin:22px 0}.row-actions{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:23px}.status{display:inline-flex;align-items:center;gap:7px;color:#8c6f9e;font-size:11px;font-weight:720}.status svg{width:13px;height:13px}
+  .breath-card{display:grid;grid-template-columns:230px 1fr;align-items:center;gap:30px;background:#f9f6fc;border:1px solid #eee7f4;border-radius:19px;padding:24px;margin-bottom:18px}.breath-ring{width:180px;height:180px;margin:auto;border-radius:50%;border:2px solid #d8c8e8;display:grid;place-items:center;position:relative;background:radial-gradient(circle,#f4eafa,#e9e0f3);box-shadow:0 0 0 11px #ebe3f45a;transform:scale(.85);transition:transform 4s ease-in-out}.breath-ring.expand{transform:scale(1)}.breath-ring span{text-align:center;color:#6c5189;font-weight:700;font-size:12px}.breath-ring strong{display:block;font-size:20px}.breath-tools{display:flex;gap:9px;flex-wrap:wrap}.checkline{display:flex;align-items:flex-start;gap:9px;font-size:12px;color:#70647a;margin-top:14px}.checkline input{accent-color:#8f73ab;margin-top:4px}.reflection{border:1px solid #eee8f4;border-radius:15px;background:#fbf9fd;padding:20px;margin:12px 0}.reflection h3{margin:0 0 9px;font-size:17px}.reflection p{margin:6px 0;color:#706880;font-size:12px}.reflection .verse{color:#6b518b;font-style:italic;font-weight:690}.timerbox{display:flex;align-items:center;gap:20px;background:#eff5ef;border-radius:18px;padding:23px}.timerface{font-size:36px;font-variant-numeric:tabular-nums;letter-spacing:-1px;font-weight:800;color:#436e58}.task-preview{background:#faf7fb;border:1px dashed #d9cde2;padding:15px 17px;border-radius:12px;font-size:13px}.task-preview strong{color:#70548e}.review-kpi{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.review-kpi >div{padding:16px;border:1px solid var(--line);border-radius:14px;background:#fdfcff}.review-kpi strong{font-size:20px;display:block;color:#765698}.hidden{display:none!important}
+  .chart{height:158px;display:flex;align-items:flex-end;gap:12px;padding:10px 0 0;border-bottom:1px solid #ece6ee}.chart-col{flex:1;display:flex;align-items:center;flex-direction:column;justify-content:end;height:100%;min-width:0}.bar-wrap{height:116px;width:min(34px,65%);display:flex;align-items:flex-end}.bar{width:100%;background:#d4e6da;border-radius:8px 8px 2px 2px;transition:height .25s;min-height:2px}.bar.has{background:linear-gradient(180deg,#93bca6,#6f9a83)}.bar-label{height:26px;margin-top:8px;font-size:10px;color:#8e8298}.log-item{border-bottom:1px solid #f0ecf2;padding:12px 0;display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.log-item:last-child{border-bottom:0}.log-item strong{font-size:12px}.log-item p{font-size:11px;color:#81788c;margin:1px 0}.log-item span{font-size:10px;color:#8a779a;white-space:nowrap}.empty{padding:35px 12px;text-align:center;color:#948c9f;font-size:12px}.about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.about-grid .card{box-shadow:none;padding:19px}.about-grid strong{font-size:14px}.about-grid p{font-size:12px;color:#80788b;margin-bottom:0}.footer{border-top:1px solid var(--line);margin-top:37px;padding-top:20px;color:#9a93a3;display:flex;justify-content:space-between;gap:10px;font-size:11px}.toast{position:fixed;right:25px;bottom:25px;background:#393049;color:#fff;padding:13px 17px;border-radius:12px;font-size:12px;box-shadow:0 14px 38px #0002;z-index:15;max-width:min(360px,calc(100vw - 40px));transition:opacity .3s}.toast.off{opacity:0;pointer-events:none}.warn{background:#fffbf1;border:1px solid #f2e9d3;border-radius:14px;color:#806c46;padding:13px 15px;font-size:11px}.top-mobile{display:none}.visually-hidden{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+  @media(max-width:1130px){.layout{grid-template-columns:210px minmax(0,1fr)}.sidebar{padding:24px 14px}.main{padding:26px}.hero{grid-template-columns:1.25fr .75fr;padding:28px}.hero-art{transform:scale(.85)}.split{grid-template-columns:1fr}.cards{gap:9px}.card{padding:18px}}@media(max-width:760px){.layout{display:block}.sidebar{position:static;height:auto;border-bottom:1px solid var(--line);border-right:none;padding:10px 18px;flex-direction:row;justify-content:space-between;align-items:center}.brand{padding:3px}.sidebar .nav-title,.sidebar .nav-link,.sidebar .side-bottom,.sidebar .side-meta{display:none}.top-mobile{display:block}.main{padding:17px 16px 45px}.topbar{padding-bottom:15px}.hero{grid-template-columns:1fr;gap:7px;min-height:auto;padding:27px 22px 10px}.hero-art{height:220px;min-height:220px;transform:scale(.89)}.hero h1{font-size:31px}.cards{grid-template-columns:1fr 1fr}.cards .card:last-child{grid-column:1/-1}.section-head{margin-top:27px}.breath-card{grid-template-columns:1fr;gap:12px}.formgrid,.about-grid{grid-template-columns:1fr}.footer{flex-direction:column}.process-preview{grid-template-columns:repeat(5,1fr)}.mini-step{padding:10px 3px}.mini-step small{display:none}.stepnav button{min-width:100px;padding:9px}.stepnav{overflow-x:auto}.tag{font-size:9px}.top-right .avatar{display:none}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+  
+  /* ==========================================================
+     AROMA-SYNC · SISTEM TIPOGRAFI (versi lampiran KIMPSI)
+     Satu keluarga huruf saja: Inter, modern dan mudah dibaca.
+     Ukuran, hierarki, dan spasi disetel agar konsisten di web
+     desktop, tablet, dan ponsel tanpa mengubah alur prototipe.
+     ========================================================== */
+  :root {
+    --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: var(--font-ui);
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.7;
+    letter-spacing: -0.008em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-optical-sizing: auto;
+    font-feature-settings: 'kern' 1;
+    text-rendering: optimizeLegibility;
+  }
+  button, input, textarea, select { font-family: inherit; letter-spacing: -0.005em; }
+  button { font-weight: 600; }
+  .brand-name {font-size:19px;font-weight:800;letter-spacing:-.045em;}
+  .brand small {font-size:10.5px;font-weight:650;letter-spacing:.07em;}
+  .nav-title {font-size:10.5px;font-weight:700;letter-spacing:.13em;}
+  .nav-link {font-size:13px;font-weight:600;line-height:1.5;}
+  .side-bottom strong {font-size:12.5px;font-weight:700;}
+  .side-bottom p {font-size:12px;line-height:1.7;}
+  .side-meta {font-size:10.5px;}
+  .eyebrow {font-size:10.5px;letter-spacing:.115em;font-weight:700;}
+  .tag {font-size:11px;font-weight:600;}
+  .hero h1 {
+    font-size:clamp(30px,3.15vw,44px);
+    font-weight:800;
+    line-height:1.19;
+    letter-spacing:-.045em;
+    text-wrap:balance;
+  }
+  .hero p {font-size:14.5px;line-height:1.83;letter-spacing:-.008em;}
+  .btn {font-size:13px;font-weight:650;line-height:1.45;}
+  .btn.small {font-size:12px;}
+  .section-head h2 {font-size:23px;font-weight:750;letter-spacing:-.035em;line-height:1.35;}
+  .section-head p {font-size:13px;line-height:1.7;}
+  .subtle {font-size:12.5px;line-height:1.7;}
+  .card {line-height:1.7;}
+  .card p {line-height:1.75;}
+  .stat-value {font-size:32px;font-weight:750;letter-spacing:-.04em;}
+  .stat-label {font-size:12px;font-weight:550;}
+  .mini-step strong {font-size:11px;font-weight:650;}
+  .mini-step small {font-size:10px;}
+  .feedback,.feedback strong {font-size:12.5px;line-height:1.75;}
+  .stepnav button {font-size:12.5px;font-weight:650;}
+  .formhead {font-size:21px;font-weight:750;letter-spacing:-.028em;line-height:1.4;}
+  .formdesc {font-size:13px;line-height:1.75;}
+  .field label,.field-label {font-size:13px;font-weight:650;line-height:1.55;}
+  .field input[type=text],.field textarea,.field select {
+    font-size:14px;
+    line-height:1.65;
+    background-color:#fff;
+  }
+  .field input::placeholder,.field textarea::placeholder {color:#8b8494;opacity:1;}
+  .choice {font-size:12.5px;font-weight:600;line-height:1.5;}
+  .level {font-size:12px;}
+  .level strong {font-size:18px;font-weight:700;}
+  .note,.warn {font-size:12px;line-height:1.75;}
+  .status {font-size:12px;font-weight:600;}
+  .checkline {font-size:12.5px;line-height:1.65;}
+  .breath-ring span {font-size:12px;font-weight:650;}
+  .breath-ring strong {font-size:21px;font-weight:700;}
+  .reflection h3 {font-size:17px;font-weight:700;line-height:1.45;}
+  .reflection p {font-size:13px;line-height:1.8;}
+  .reflection .verse {font-weight:600;}
+  .timerface {font-size:38px;font-weight:750;letter-spacing:-.04em;}
+  .task-preview {font-size:13px;line-height:1.75;}
+  .review-kpi strong {font-size:20px;font-weight:750;}
+  .bar-label {font-size:11px;}
+  .log-item strong {font-size:13px;font-weight:650;}
+  .log-item p {font-size:12px;line-height:1.65;}
+  .log-item span {font-size:11px;}
+  .empty {font-size:13px;}
+  .about-grid strong {font-size:14px;font-weight:700;}
+  .about-grid p {font-size:13px;line-height:1.8;}
+  .footer {font-size:11.5px;line-height:1.7;}
+  .toast {font-size:12.5px;line-height:1.65;}
+  @media(max-width:1130px) {
+    .hero h1 {font-size:clamp(29px,3vw,40px);}
+  }
+  @media(max-width:760px) {
+    body {font-size:14px;line-height:1.7;}
+    .hero h1 {font-size:clamp(29px,8vw,34px);letter-spacing:-.04em;}
+    .hero p {font-size:14px;line-height:1.8;}
+    .section-head h2 {font-size:21px;}
+    .tag {font-size:10px;}
+    .mini-step strong {font-size:10px;}
+    .stepnav button {font-size:12px;}
+    .brand-name {font-size:18px;}
+  }
+  </style>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar" aria-label="Navigasi utama">
+    <a class="brand" href="#beranda"><div class="brand-icon" aria-hidden="true">✳</div><div><div class="brand-name">AROMA-SYNC</div><small>RESET • REFLECT • RESUME</small></div></a>
+    <div class="nav-title">RUANG BELAJAR</div>
+    <button type="button" class="nav-link active" data-nav="beranda" onclick="go('beranda')"><span aria-hidden="true">⌂</span> Beranda</button>
+    <button type="button" class="nav-link" data-nav="sesi" onclick="go('sesi')"><span aria-hidden="true">◉</span> Mulai sesi</button>
+    <button type="button" class="nav-link" data-nav="jurnal" onclick="go('jurnal')"><span aria-hidden="true">▥</span> Jurnal & progres</button>
+    <button type="button" class="nav-link" data-nav="tentang" onclick="go('tentang')"><span aria-hidden="true">✧</span> Tentang inovasi</button>
+    <div class="side-bottom"><strong>Jeda juga bagian dari ikhtiar.</strong><p>Kamu tidak harus menyelesaikan semuanya hari ini. Cukup satu langkah kecil setelah beristirahat.</p></div>
+    <div class="side-meta">PROTOTIPE KONSEPTUAL · KIMPSI VII 2026</div>
+    <button type="button" class="btn ghost small top-mobile" onclick="go('sesi')">Mulai sesi →</button>
+  </aside>
+
+  <main class="main">
+    <div class="topbar"><span class="eyebrow">Sebuah ruang untuk kembali memulai</span><div class="top-right"><span class="tag"><span class="dot"></span> Prototipe interaktif</span><span class="avatar" aria-label="Pengguna demo">AS</span></div></div>
+    <section id="beranda" class="section" aria-label="Beranda">
+      <div class="hero">
+        <div><span class="eyebrow">AROMA-SYNC • RELAKSASI MULTISENSORI</span><h1>Tenangkan diri.<br/><em>Temukan langkah berikutnya.</em></h1><p>Memadukan aroma, panduan audio, informasi respons tubuh, serta zikir–muhasabah Qurani yang bersifat pilihan. Dari jeda yang bermakna, kamu bisa kembali mengerjakan skripsi secara bertahap.</p><div class="hero-actions"><button class="btn primary" type="button" onclick="go('sesi')">Mulai Reset-to-Resume <span aria-hidden="true">↗</span></button><button class="btn secondary" type="button" onclick="go('tentang')">Kenali inovasinya</button></div></div>
+        <div class="hero-art" aria-label="Ilustrasi konseptual diffuser dan smartwatch dengan speaker"><div class="halo"></div><div class="diffuser" aria-hidden="true"><div class="vapor"></div><div class="diffuser-lid"></div><div class="diffuser-body"></div></div><div class="watch" aria-hidden="true"><div class="watch-strap"></div><div class="watch-face"><div class="watch-screen">AROMA-SYNC<strong>♡</strong><small>SENSOR DEMO</small></div></div></div><div class="float-label fl1"><span class="s-dot"></span> Sensor pendamping</div><div class="float-label fl2"><span class="s-dot"></span> Aroma & audio pilihan</div><div class="float-label fl3"><span class="s-dot"></span> Dua speaker, fungsi berbeda</div></div>
+      </div>
+      <div class="section-head"><div><h2>Langkah kecilmu hari ini</h2><p>Tidak perlu langsung sempurna. Mulai dengan memahami kondisi diri.</p></div><span class="subtle">Data pada perangkat ini hanya tersimpan di browsermu.</span></div>
+      <div class="cards">
+        <article class="card"><div class="stat-top"><span class="stat-label">Sesi yang dicatat</span><span class="round-icon" aria-hidden="true">◷</span></div><div class="stat-value" id="totalSessions">0</div><span class="stat-label">Sesi simulasi selesai</span></article>
+        <article class="card"><div class="stat-top"><span class="stat-label">Hari kembali mengerjakan</span><span class="round-icon green" aria-hidden="true">✓</span></div><div class="stat-value" id="activeDays">0</div><span class="stat-label">Berdasarkan laporanmu sendiri</span></article>
+        <article class="card"><div class="stat-top"><span class="stat-label">Kondisi perangkat</span><span class="round-icon gold" aria-hidden="true">⌁</span></div><div class="stat-value" style="font-size:20px;margin-top:15px">Belum terhubung</div><span class="stat-label">Diffuser & smartwatch masih rancangan</span></article>
+      </div>
+      <div class="split">
+        <article class="card"><div class="section-head" style="margin:0 0 4px"><div><h2 style="font-size:18px">Lima tahap Reset-to-Resume</h2><p>Satu rangkaian yang bisa disesuaikan dengan kebutuhanmu.</p></div></div><div class="process-preview"><div class="mini-step current"><span>◌</span><strong>Check-in</strong><small>Kenali diri</small></div><div class="mini-step"><span>◍</span><strong>Reset</strong><small>Ambil jeda</small></div><div class="mini-step"><span>✧</span><strong>Reflect</strong><small>Refleksi</small></div><div class="mini-step"><span>↗</span><strong>Resume</strong><small>Mulai lagi</small></div><div class="mini-step"><span>▥</span><strong>Review</strong><small>Lihat progres</small></div></div><button type="button" class="btn secondary small" onclick="go('sesi')" style="margin-top:19px">Coba semua tahap →</button></article>
+        <article class="card"><div class="section-head" style="margin:0 0 13px"><div><h2 style="font-size:18px">Pendamping, bukan penilai</h2><p>Teknologi yang memberi ruang pada manusia.</p></div></div><div class="feedback"><strong>Informasi tubuh ≠ diagnosis stres.</strong><br/>Nilai detak jantung dan HRV hanya boleh ditampilkan sebagai data pendamping jika perangkat mendukung serta pengguna memberi izin.</div><p class="note" style="margin-bottom:0">Aroma dan audio spiritual bersifat opsional. Kamu boleh memilih sesi hening, tanpa aroma, atau tanpa fitur spiritual.</p></article>
+      </div>
+    </section>
+
+    <section id="sesi" class="section" style="margin-top:40px" aria-labelledby="sessionTitle">
+      <div class="section-head"><div><h2 id="sessionTitle">Ruang sesi pribadi</h2><p>Lima tahap sederhana untuk memahami diri, beristirahat, dan melanjutkan satu tugas.</p></div><span class="tag">ALUR SIMULASI</span></div>
+      <div class="stepnav" role="tablist" aria-label="Tahapan Reset-to-Resume"><button id="tab0" type="button" class="selected" aria-selected="true" role="tab" data-step="0"><span>01</span> Check-in</button><button id="tab1" type="button" aria-selected="false" role="tab" data-step="1"><span>02</span> Reset</button><button id="tab2" type="button" aria-selected="false" role="tab" data-step="2"><span>03</span> Reflect</button><button id="tab3" type="button" aria-selected="false" role="tab" data-step="3"><span>04</span> Resume</button><button id="tab4" type="button" aria-selected="false" role="tab" data-step="4"><span>05</span> Review</button></div>
+      <div class="card" style="padding:clamp(20px,3vw,34px)">
+      <div class="step-panel active" data-panel="0" role="tabpanel" aria-labelledby="tab0">
+        <h3 class="formhead">Bagaimana keadaanmu saat ini?</h3><p class="formdesc">Tidak ada jawaban benar atau salah. Mulai dari apa yang kamu rasakan.</p>
+        <div class="field"><span class="field-label">Pilih perasaan yang paling menggambarkan dirimu</span><div class="pill-row" id="moods"><button type="button" class="choice" data-value="Tenang" aria-pressed="false">Tenang</button><button type="button" class="choice" data-value="Lelah" aria-pressed="false">Lelah</button><button type="button" class="choice" data-value="Cemas" aria-pressed="false">Cemas</button><button type="button" class="choice" data-value="Bingung" aria-pressed="false">Bingung</button><button type="button" class="choice" data-value="Bersemangat" aria-pressed="false">Bersemangat</button></div></div>
+        <div class="formgrid"><div class="field"><label for="stressBefore">Seberapa tegang kamu merasa sekarang?</label><input type="range" id="stressBefore" min="0" max="10" value="5" /><div class="level"><span>0 · sangat ringan</span><strong id="stressBeforeLabel">5/10</strong><span>10 · sangat berat</span></div><span class="note">Penilaian subjektif, bukan skor pemeriksaan klinis.</span></div><div class="field"><label for="task">Apa satu tugas kecil yang ingin kamu mulai?</label><input type="text" id="task" maxlength="140" placeholder="Contoh: revisi satu paragraf latar belakang" /><span class="note">Pilih yang cukup kecil untuk dicoba hari ini.</span></div></div>
+        <div class="row-actions"><span class="status">◌ &nbsp;Tahap 1 dari 5</span><button class="btn primary" type="button" onclick="nextStep(1)">Lanjut ke Reset →</button></div>
+      </div>
+      <div class="step-panel" data-panel="1" role="tabpanel" aria-labelledby="tab1">
+        <h3 class="formhead">Ambil jeda dengan nyaman</h3><p class="formdesc">Aroma dan panduan napas hanya simulasi dalam web ini. Tidak ada diffuser yang dikendalikan.</p>
+        <div class="field"><span class="field-label">Pilih aroma untuk rancangan sesi</span><div class="pill-row" id="aromas"><button type="button" class="choice green" data-value="Lavender" aria-pressed="false">Lavender</button><button type="button" class="choice green" data-value="Sitrus" aria-pressed="false">Sitrus</button><button type="button" class="choice green" data-value="Eukaliptus" aria-pressed="false">Eukaliptus</button><button type="button" class="choice green" data-value="Tanpa aroma" aria-pressed="true">Tanpa aroma</button></div></div>
+        <div class="breath-card"><div class="breath-ring" id="breathRing"><span id="breathText">Siap?<strong>Tarik napas perlahan</strong></span></div><div><strong style="font-size:15px">Panduan pernapasan sederhana</strong><p class="subtle">Ikuti ritme nyamanmu sendiri: tarik dan hembuskan napas perlahan. Hentikan bila pusing atau tidak nyaman.</p><div class="breath-tools"><button type="button" class="btn sage small" id="breathToggle">Mulai latihan 60 detik</button><button type="button" class="btn secondary small" id="soundToggle" aria-pressed="false">Panduan suara: nonaktif</button></div><p class="note" id="breathTimerText" role="status">Belum dimulai • audio tidak diputar otomatis</p></div></div>
+        <div class="warn">Keamanan: penggunaan minyak esensial harus mengikuti petunjuk produk. Jangan ditelan. Pilih tanpa aroma jika mempunyai sensitivitas atau gangguan pernapasan yang dipicu wewangian.</div>
+        <div class="row-actions"><button class="btn ghost" type="button" onclick="nextStep(0)">← Kembali</button><button class="btn primary" type="button" onclick="nextStep(2)">Lanjut ke Reflect →</button></div>
+      </div>
+      <div class="step-panel" data-panel="2" role="tabpanel" aria-labelledby="tab2">
+        <h3 class="formhead">Berikan ruang untuk refleksi</h3><p class="formdesc">Fitur spiritual Islam bersifat pilihan. Kamu tetap bisa melanjutkan tanpa memilihnya.</p>
+        <div class="field"><span class="field-label">Pendamping refleksi yang ingin kamu pilih</span><div class="pill-row" id="spiritualChoices"><button type="button" class="choice" data-value="Muhasabah" aria-pressed="false">Muhasabah</button><button type="button" class="choice" data-value="Zikir" aria-pressed="false">Zikir</button><button type="button" class="choice" data-value="Murottal" aria-pressed="false">Murottal Al-Qur'an</button><button type="button" class="choice" data-value="Asmaulhusna" aria-pressed="false">Asmaulhusna</button><button type="button" class="choice" data-value="Lewati" aria-pressed="true">Lewati</button></div></div>
+        <div class="reflection" id="reflectionBox" aria-live="polite"><h3>Refleksi sederhana</h3><p>Kamu tetap boleh melanjutkan sesi dengan atau tanpa audio dan praktik spiritual.</p><p class="verse">"Apa yang sedang saya rasakan, dan langkah baik apa yang dapat saya lakukan setelah beristirahat?"</p></div>
+        <div class="field"><label for="reflectionNote">Catatan refleksimu (opsional)</label><textarea id="reflectionNote" placeholder="Tulis satu kalimat yang ingin kamu ingat..." maxlength="500"></textarea><span class="note">Catatan hanya disimpan pada browser ini jika kamu memilih menyimpan sesi.</span></div>
+        <div class="row-actions"><button class="btn ghost" type="button" onclick="nextStep(1)">← Kembali</button><button class="btn primary" type="button" onclick="nextStep(3)">Lanjut ke Resume →</button></div>
+      </div>
+      <div class="step-panel" data-panel="3" role="tabpanel" aria-labelledby="tab3">
+        <h3 class="formhead">Mulai dari satu langkah kecil</h3><p class="formdesc">Setelah beristirahat, kamu tidak harus menyelesaikan seluruh skripsi sekaligus.</p>
+        <div class="task-preview"><span class="subtle">TARGET REVISIMU</span><br/><strong id="taskPreview">Belum ada tugas yang dipilih</strong></div>
+        <div class="timerbox" style="margin-top:18px"><div><span class="subtle">PENGINGAT FOKUS</span><div class="timerface" id="focusTime">05:00</div></div><div><strong>Mulai bekerja selama 5 menit</strong><p class="note" style="margin:4px 0 10px">Pengingat ini hanya membantu memulai, bukan mengukur produktivitas.</p><div class="breath-tools"><button class="btn sage small" id="focusToggle" type="button">Mulai 5 menit</button><button class="btn secondary small" type="button" id="focusReset">Atur ulang</button></div></div></div>
+        <label class="checkline"><input type="checkbox" id="didStart"/> <span>Saya sudah mencoba memulai tugas, meskipun hanya sedikit.</span></label>
+        <div class="row-actions"><button class="btn ghost" type="button" onclick="nextStep(2)">← Kembali</button><button class="btn primary" type="button" onclick="nextStep(4)">Lanjut ke Review →</button></div>
+      </div>
+      <div class="step-panel" data-panel="4" role="tabpanel" aria-labelledby="tab4">
+        <h3 class="formhead">Lihat kemajuanmu tanpa menghakimi</h3><p class="formdesc">Catat perubahan perasaan dan progres kecil setelah sesi.</p>
+        <div class="formgrid"><div class="field"><label for="stressAfter">Seberapa tegang kamu merasa setelah sesi?</label><input type="range" id="stressAfter" min="0" max="10" value="5"/><div class="level"><span>0 · sangat ringan</span><strong id="stressAfterLabel">5/10</strong><span>10 · sangat berat</span></div></div><div class="field"><label for="outcome">Bagaimana perkembangan tugasmu?</label><select id="outcome"><option value="Belum mulai">Belum mulai — saya masih butuh waktu</option><option value="Sudah mencoba">Sudah mencoba memulai</option><option value="Ada kemajuan">Ada kemajuan kecil</option></select></div></div>
+        <div class="review-kpi"><div><span class="subtle">SEBELUM JEDA</span><strong id="beforeSummary">5/10</strong><span class="note">Ketegangan yang dilaporkan</span></div><div><span class="subtle">SETELAH JEDA</span><strong id="afterSummary">5/10</strong><span class="note">Bukan hasil diagnosis</span></div></div>
+        <label class="checkline"><input type="checkbox" id="saveConsent"/> <span>Saya setuju menyimpan catatan sesi secara lokal di browser ini. Saya memahami bahwa data tidak dikirimkan ke server.</span></label>
+        <div class="row-actions"><button class="btn ghost" type="button" onclick="nextStep(3)">← Kembali</button><button class="btn primary" type="button" id="saveSession">Simpan sesi & lihat progres →</button></div>
+      </div>
+      </div>
+    </section>
+
+    <section id="jurnal" class="section" style="margin-top:40px"><div class="section-head"><div><h2>Jurnal & perkembangan</h2><p>Progres pribadi, bukan perbandingan dengan orang lain.</p></div><button type="button" class="btn ghost small" id="deleteData">Hapus seluruh data</button></div>
+      <div class="split"><div class="card"><div class="section-head" style="margin:0"><div><h2 style="font-size:17px">Hari saat kamu kembali memulai</h2><p>Jumlah sesi dengan pekerjaan yang dicoba, selama 7 hari terakhir.</p></div></div><div class="chart" id="weeklyChart" role="img" aria-label="Grafik mingguan berdasarkan catatan pribadi"></div><p class="note" id="chartNote" style="margin-top:18px">Belum ada sesi tersimpan. Grafik akan terisi setelah kamu menyimpan sesi.</p></div><div class="card"><div class="section-head" style="margin:0 0 6px"><div><h2 style="font-size:17px">Catatan terakhir</h2><p>Perasaan dan langkah kecil yang sudah kamu coba.</p></div></div><div id="recentSessions"><div class="empty">Belum ada catatan.<br/>Mulai sesi pertamamu untuk melihat progres.</div></div></div></div>
+    </section>
+
+    <section id="tentang" class="section" style="margin-top:38px"><div class="section-head"><div><h2>Tentang AROMA-SYNC</h2><p>Inovasi konseptual yang menjaga keseimbangan teknologi, psikologi, dan nilai Islam.</p></div></div><div class="about-grid"><div class="card"><div class="round-icon">◌</div><h3 style="font-size:15px">Olfaktori–auditori</h3><p>Aroma dari diffuser dan suara dari speaker sebagai pilihan pendamping rehat. Efektivitas gabungannya belum teruji.</p></div><div class="card"><div class="round-icon green">♡</div><h3 style="font-size:15px">Biofeedback pendamping</h3><p>Rencana penggunaan data detak jantung dan HRV jika tersedia. Prototipe ini belum tersambung ke sensor nyata.</p></div><div class="card"><div class="round-icon gold">✧</div><h3 style="font-size:15px">Zikir–muhasabah Qurani</h3><p>Ruang untuk mengingat Allah dan mengevaluasi diri secara sukarela, bukan ukuran keimanan atau pengganti layanan psikologis.</p></div></div>
+    <div class="card" style="margin-top:14px"><h3 style="margin:0 0 6px;font-size:15px">Batasan prototipe dan privasi</h3><p class="note">Situs ini adalah simulasi antarmuka untuk Lampiran 1 esai KIMPSI VII 2026. Tidak tersambung ke diffuser, smartwatch, Health Connect, layanan kesehatan, atau penyedia audio. Data demo dibuat oleh input pengunjung dan hanya disimpan pada <em>localStorage</em> browser jika diberi izin; data bisa dihapus kapan saja. Tidak ada pengumpulan identitas, login, analisis biometrik, maupun diagnosis medis. Rekaman murottal atau Asmaulhusna tidak diputar otomatis; tautan sumber eksternal dibuka hanya jika pengguna memilihnya. Manfaat keseluruhan inovasi masih memerlukan pengujian keamanan, kelayakan, dan efektivitas.</p><p class="note" style="margin:6px 0 0"><strong>Landasan nilai:</strong> QS. Ar-Ra’d [13]: 28 dan QS. Al-Hasyr [59]: 18. <strong>Pendekatan psikologi:</strong> penilaian stres dan koping (Lazarus & Folkman), regulasi diri (Zimmerman), serta perencanaan tindakan konkret (MCII). Sumber akademik lengkap tersedia dalam naskah esai.</p></div></section>
+    <footer class="footer"><span>AROMA-SYNC • Rancangan konseptual penulis (2026)</span><span>KIMPSI VII 2026 · <em>Humanity in the Digital Age</em></span></footer>
+  </main>
+</div>
+<div id="toast" class="toast off" role="status" aria-live="polite"></div>
+<script>
+(function(){'use strict';
+ const $=id=>document.getElementById(id);
+ const state={step:0,mood:'',aroma:'Tanpa aroma',spiritual:'Lewati',records:[],breathRemaining:60,breathTick:null,breathPhase:0,breathRunning:false,speech:false,focusRemaining:300,focusTick:null,focusRunning:false};
+ const KEY='aroma-sync-demo-v1';
+ function showToast(message){const el=$('toast');el.textContent=message;el.classList.remove('off');clearTimeout(showToast.timer);showToast.timer=setTimeout(()=>el.classList.add('off'),3700)}
+ function safeGet(){try{const v=JSON.parse(localStorage.getItem(KEY)||'[]');return Array.isArray(v)?v.filter(x=>x&&typeof x.date==='string').slice(-120):[]}catch(e){return []}}
+ function safeSave(){try{localStorage.setItem(KEY,JSON.stringify(state.records));return true}catch(e){showToast('Penyimpanan browser diblokir. Catatan belum tersimpan.');return false}}
+ state.records=safeGet();
+ window.go=function(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth',block:'start'});document.querySelectorAll('.nav-link').forEach(x=>x.classList.toggle('active',x.dataset.nav===id))};
+ function nextStep(to){state.step=Math.min(4,Math.max(0,to));document.querySelectorAll('.step-panel').forEach(x=>x.classList.toggle('active',Number(x.dataset.panel)===state.step));document.querySelectorAll('[data-step]').forEach(x=>{const selected=Number(x.dataset.step)===state.step;x.classList.toggle('selected',selected);x.setAttribute('aria-selected',String(selected))});$('taskPreview').textContent=$('task').value.trim()||'Coba membuka satu bagian skripsimu';$('beforeSummary').textContent=$('stressBefore').value+'/10';$('afterSummary').textContent=$('stressAfter').value+'/10';if(state.step!==1)stopBreath();if(state.step!==3)pauseFocus();$('sesi').scrollIntoView({behavior:'smooth',block:'start'})}
+ window.nextStep=nextStep;
+ document.querySelectorAll('[data-step]').forEach(el=>el.addEventListener('click',()=>nextStep(Number(el.dataset.step))));
+ for(const [container,key] of [['moods','mood'],['aromas','aroma'],['spiritualChoices','spiritual']]){
+  $(container).addEventListener('click',e=>{const el=e.target.closest('button[data-value]');if(!el)return;state[key]=el.dataset.value;$(container).querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===el)));if(key==='spiritual')updateReflection()});
+ }
+ for(const type of ['Before','After'])$('stress'+type).addEventListener('input',e=>{ $('stress'+type+'Label').textContent=e.target.value+'/10';$('beforeSummary').textContent=$('stressBefore').value+'/10';$('afterSummary').textContent=$('stressAfter').value+'/10'});
+ const reflectionContent={
+ 'Muhasabah':{title:'Muhasabah: mengenal dan mengevaluasi diri',body:'QS. Al-Hasyr [59]: 18 mengajak orang beriman memperhatikan amal sebagai bekal hari akhir. Dalam sesi ini, kamu dapat memilih satu ikhtiar baik tanpa menyalahkan diri.',prompt:'Apa yang sedang aku rasakan? Langkah kecil apa yang ingin aku perbaiki hari ini?'},
+ 'Zikir':{title:'Zikir: mengingat Allah dengan tenang',body:'QS. Ar-Ra’d [13]: 28 mengaitkan ketenteraman hati dengan mengingat Allah. Kamu bebas melakukan zikir sesuai kebiasaan dan kenyamanan.',prompt:'Hal baik apa yang patut aku syukuri, meski hariku belum berjalan sesuai rencana?'},
+ 'Murottal':{title:'Murottal Al-Qur’an (pilihan)',body:'Untuk mendengarkan bacaan Al-Qur’an, buka sumber eksternal di bawah secara sadar. Tidak ada audio yang diputar otomatis atau disimpan di situs ini.',prompt:'Bacaan apa yang ingin kudengarkan dengan tenang hari ini?',url:'https://quran.com/',link:'Buka Quran.com ↗'},
+ 'Asmaulhusna':{title:'Mengingat Asmaulhusna',body:'Pilih untuk mengingat nama-nama Allah secara pribadi. Prototipe ini tidak menyediakan rekaman agar penggunaan audio dapat melalui sumber yang sesuai.',prompt:'Sifat kasih sayang Allah apa yang ingin kuingat saat menghadapi kesulitan?',url:'https://quran.com/7/180',link:'Lihat QS. Al-A’raf [7]: 180 ↗'},
+ 'Lewati':{title:'Refleksi sederhana',body:'Kamu tetap boleh melanjutkan sesi dengan atau tanpa audio dan praktik spiritual.',prompt:'Apa yang sedang saya rasakan, dan langkah baik apa yang dapat saya lakukan setelah beristirahat?'}
+ };
+ function updateReflection(){const obj=reflectionContent[state.spiritual]||reflectionContent.Lewati;const box=$('reflectionBox');box.replaceChildren();const h=document.createElement('h3');h.textContent=obj.title;const p=document.createElement('p');p.textContent=obj.body;const q=document.createElement('p');q.className='verse';q.textContent='“'+obj.prompt+'”';box.append(h,p,q);if(obj.url){const a=document.createElement('a');a.className='btn secondary small';a.href=obj.url;a.target='_blank';a.rel='noopener noreferrer';a.style.marginTop='12px';a.textContent=obj.link;box.append(a)}}
+ function speak(text){if(!state.speech||!('speechSynthesis'in window))return;try{window.speechSynthesis.cancel();const utterance=new SpeechSynthesisUtterance(text);utterance.lang='id-ID';utterance.rate=.82;window.speechSynthesis.speak(utterance)}catch(e){/* Device may not support speech synthesis */}}
+ function stopBreath(){clearInterval(state.breathTick);state.breathTick=null;state.breathRunning=false;$('breathToggle').textContent='Mulai latihan 60 detik';$('breathRing').classList.remove('expand');if('speechSynthesis'in window)window.speechSynthesis.cancel()}
+ function paintBreath(){const sec=state.breathRemaining;const phase=Math.floor((60-sec)/8)%2;const isIn=phase===0;$('breathRing').classList.toggle('expand',isIn);$('breathText').replaceChildren(document.createTextNode(isIn?'Tarik napas':'Hembuskan'));const strong=document.createElement('strong');strong.textContent=isIn?'perlahan':'perlahan';$('breathText').append(strong);$('breathTimerText').textContent='Sisa '+sec+' detik · Kamu boleh berhenti kapan saja';if(phase!==state.breathPhase){speak(isIn?'Tarik napas perlahan':'Hembuskan napas perlahan');state.breathPhase=phase}}
+ $('breathToggle').addEventListener('click',()=>{if(state.breathRunning){stopBreath();$('breathTimerText').textContent='Latihan dihentikan. Kamu tetap boleh melanjutkan sesi.';return}state.breathRunning=true;state.breathRemaining=60;state.breathPhase=-1;paintBreath();$('breathToggle').textContent='Hentikan latihan';state.breathTick=setInterval(()=>{state.breathRemaining--;if(state.breathRemaining<=0){stopBreath();$('breathTimerText').textContent='Latihan selesai. Jika merasa nyaman, lanjutkan ke refleksi.';return}paintBreath()},1000)});
+ $('soundToggle').addEventListener('click',()=>{state.speech=!state.speech;$('soundToggle').setAttribute('aria-pressed',String(state.speech));$('soundToggle').textContent='Panduan suara: '+(state.speech?'aktif':'nonaktif');if(state.speech&&!('speechSynthesis'in window)){showToast('Browser ini tidak mendukung panduan suara.');state.speech=false;$('soundToggle').setAttribute('aria-pressed','false');$('soundToggle').textContent='Panduan suara: nonaktif'}});
+ function paintFocus(){const m=Math.floor(state.focusRemaining/60),s=state.focusRemaining%60;$('focusTime').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')}
+ function pauseFocus(){clearInterval(state.focusTick);state.focusTick=null;state.focusRunning=false;$('focusToggle').textContent='Lanjutkan 5 menit'}
+ $('focusToggle').addEventListener('click',()=>{if(state.focusRunning){pauseFocus();return}state.focusRunning=true;$('focusToggle').textContent='Jeda pengingat';state.focusTick=setInterval(()=>{state.focusRemaining=Math.max(0,state.focusRemaining-1);paintFocus();if(!state.focusRemaining){pauseFocus();showToast('Lima menit berlalu. Usaha kecilmu tetap berarti.')}},1000)});
+ $('focusReset').addEventListener('click',()=>{pauseFocus();state.focusRemaining=300;paintFocus();$('focusToggle').textContent='Mulai 5 menit'});
+ $('didStart').addEventListener('change',e=>{if(e.target.checked)$('outcome').value='Sudah mencoba'});
+ const localDate=(date)=>{const x=new Date(date);return x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0')};
+ function recordsByDay(){const days=[];for(let n=6;n>=0;n--){const date=new Date();date.setDate(date.getDate()-n);const key=localDate(date);const matches=state.records.filter(x=>localDate(x.date)===key && x.outcome!=='Belum mulai');days.push({date,count:matches.length,label:date.toLocaleDateString('id-ID',{weekday:'short'})})}return days}
+ function renderRecords(){const records=state.records;$('totalSessions').textContent=records.length;const unique=new Set(records.filter(x=>x.outcome!=='Belum mulai').map(x=>localDate(x.date)));$('activeDays').textContent=unique.size;
+ const days=recordsByDay(),chart=$('weeklyChart');chart.replaceChildren();const max=Math.max(1,...days.map(x=>x.count));for(const day of days){const col=document.createElement('div');col.className='chart-col';const wrap=document.createElement('div');wrap.className='bar-wrap';const bar=document.createElement('div');bar.className='bar'+(day.count?' has':'');bar.style.height=(day.count?Math.max(9,day.count/max*100):2)+'%';bar.title=day.label+': '+day.count+' sesi dimulai';wrap.append(bar);const label=document.createElement('span');label.className='bar-label';label.textContent=day.label;col.append(wrap,label);chart.append(col)}$('chartNote').textContent=records.length?'Grafik menggunakan catatan pribadi yang disimpan di browser ini. Tidak ada target harian wajib.':'Belum ada sesi tersimpan. Grafik akan terisi setelah kamu menyimpan sesi.';
+ const root=$('recentSessions');root.replaceChildren();if(!records.length){const empty=document.createElement('div');empty.className='empty';empty.textContent='Belum ada catatan. Mulai sesi pertamamu untuk melihat progres.';root.append(empty);return}records.slice(-4).reverse().forEach(x=>{const el=document.createElement('div');el.className='log-item';const c=document.createElement('div'),strong=document.createElement('strong'),p=document.createElement('p'),date=document.createElement('span');strong.textContent=x.task||'Langkah kecil untuk skripsi';p.textContent=x.outcome+' · '+x.before+'/10 → '+x.after+'/10';date.textContent=new Date(x.date).toLocaleDateString('id-ID',{day:'numeric',month:'short'});c.append(strong,p);el.append(c,date);root.append(el)})}
+ $('saveSession').addEventListener('click',()=>{if(!$('saveConsent').checked){showToast('Centang persetujuan penyimpanan lokal terlebih dahulu.');$('saveConsent').focus();return}const outcome=$('outcome').value;const record={date:new Date().toISOString(),mood:state.mood||'Tidak dipilih',aroma:state.aroma,spiritual:state.spiritual,task:$('task').value.trim().slice(0,140),reflection:$('reflectionNote').value.trim().slice(0,500),before:Number($('stressBefore').value),after:Number($('stressAfter').value),outcome};state.records.push(record);state.records=state.records.slice(-120);if(!safeSave()){state.records.pop();return}renderRecords();$('saveConsent').checked=false;showToast('Sesi tersimpan di browser. Terima kasih sudah mencoba.');go('jurnal')});
+ $('deleteData').addEventListener('click',()=>{if(!state.records.length){showToast('Belum ada catatan yang perlu dihapus.');return}if(!confirm('Hapus semua jurnal AROMA-SYNC yang tersimpan di browser ini?'))return;state.records=[];try{localStorage.removeItem(KEY)}catch(e){}renderRecords();showToast('Catatan lokal telah dihapus.')});
+ renderRecords();updateReflection();paintFocus();
+})();
+</script>
+</body>
+</html>
